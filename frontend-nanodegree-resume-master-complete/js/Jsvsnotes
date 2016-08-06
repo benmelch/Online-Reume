@@ -1,3 +1,5 @@
+There are only six falsy values in JavaScript
+
 false
 0 (zero)
 "" (empty string)

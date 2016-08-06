@@ -42,12 +42,12 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
+  <script src="//d3js.org/d3.v3.min.js"></script>
 
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive Google Map to your resume!
   -->
  <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key= "AIzaSyCQp2Uo8rXO4SHuqckejDEs3_PW22-1m7c""></script>
 
 
   <meta name="viewport" content="width=device-width">
@@ -138,7 +138,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('mapDiv').style.backgroundColor ='none';
     } 
     
-
+//Display my profile information in header
  biodisplay = function(){
     var formattedName= HTMLheaderName.replace("%data%",bio.name);
     var fromattedRole = HTMLheaderRole.replace("%data%",bio.role);
@@ -166,7 +166,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   }
   biodisplay();
 
-
+// Diaplsy skills related to my profile in header
 
     if (bio.skills.length > 0)
     {
@@ -183,6 +183,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
     }
  
+  //This function displays my work experience in the Work Experience section
+
   displayWork= function(){
      for(job in work.jobs)
           {
@@ -199,20 +201,66 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
             var formatedDescription =HTMLworkDescription.replace("%data%",work.jobs[job].discription);
             $(".work-entry:last").append(formatedDescription);
           } 
+
         }
       displayWork();
+
+
+      //Capture user action with site
       $(document).click(function(loc) {
         var x = loc.pageX;
         var y = loc.pageY;
         logClicks(x,y);
       });
   
+  //This function diplays they education enformation 
+  displayEducation= function(){
+    $("#education").append(HTMLschoolStart);
       
+      for(school in education.schools)
+      {
+        
+        var formattedSchoolname = HTMLschoolName.replace("%data%", education.schools[school].name);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        var formatedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major)
+        var formattedSchooldates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        
+        $(".education-entry:last").append(formattedSchoolname);
+        $(".education-entry:last").append(formattedSchooldates);
+        $(".education-entry:last").append(formatedMajor);
+        $(".education-entry:last").append(formattedLocation);
+        
+      }
+  };
+    displayEducation(); 
 
-      function displayProject(){
+
+//this function displays information regarding online education
+  displayOnlineCourse = function()
+  {
+    $("#education").append(HTMLonlineClasses);
+       for(school in education.onlinecourse)
+      {
+        $("#education").append(HTMLschoolStart);       
+
+        var formattedOnlschool = HTMLonlineSchool.replace("%data%", education.onlinecourse[school].school);
+        var formattedOnltitle = HTMLonlineTitle.replace("%data%", education.onlinecourse[school].title);
+        var formatedOnldates = HTMLonlineDates.replace("%data%", education.onlinecourse[school].dates)
+        var formattedUrl = HTMLonlineURL.replace("%data%", education.onlinecourse[school].url);
+        
+        $(".education-entry:last").append(formattedOnltitle);
+        $(".education-entry:last").append(formattedOnlschool);
+        $(".education-entry:last").append(formatedOnldates);
+        $(".education-entry:last").append(formattedUrl);
+        
+      }
+  };
+displayOnlineCourse();
+// This function displays project ecxpertence 
+
+    function displayProject(){
         for (project in projects.projects){
           $("#projects").append(HTMLprojectStart);
-        //console.log(projects.projects[0].title);
           var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
           $(".project-entry:last").append(formattedTitle);
 
@@ -230,6 +278,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       };
     displayProject();
     
-  </script>   
+  </script>     
 </body>
 </html>

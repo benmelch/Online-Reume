@@ -71,23 +71,22 @@ var education = {
 					  	{
 					  	 "name" :"Concordia University",
 					  	 "location" :"Montreal, Canada",
-					  	 "majorr": ["Management of Information Systems"],
-					  	 "degree dates":2000
+					  	 "major": ["Management of Information Systems"],
+					  	 "dates":"1997-2000"
 					  	 
 					  	},
 					  	{
 					  	 "name" :"Vanier College",
-					  	 "city" :"Montreal, Canada",
-					  	 "majors": "Commerce",
-					  	 "graduation":1997,
-					  	 "online course":"none"
+					  	 "location" :"Montreal, Canada",
+					  	 "major": "Commerce",
+					  	 "dates":"1995-1997",
 					  	}
 					],
-					"online Course":
+					"onlinecourse":
 					[
 						{
+							"school":"Udacity",
 							"title":"Intro to Programming",
-							"school": "Udacity",
 							"dates": "2016",
 							"url":"https://www.udacity.com/nanodegree"
 						}
